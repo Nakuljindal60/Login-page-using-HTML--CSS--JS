@@ -1,0 +1,135 @@
+<!-- Write a Javascript code block, which validates a username and password against hard coded values.
+    if either the name or password is empty, 
+        display a message showing "Please enter your username and password to login."
+    if either the name or password is empty, 
+        display a message showing "You forgot one of the required fields, Please try again."
+    if the username and password are correct,
+        display a message showing "Welcome {username}! You have successfully logged in."
+    if the username and password are incorrect,
+        display a message showing "Please enter a valid username and password" -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Validation</title>
+    <script>
+        // Hardcoded username and password
+        const hardcodedUsername = "admin"; // Hardcoded username has been set as admin
+        const hardcodedPassword = "12345"; // Hardcoded passworrd has been set as 12345
+
+        function validateLogin() {
+            // Get input values
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
+
+            // Clear previous messages
+            message.textContent = "";
+
+            if (!username && !password) {
+                message.textContent = "Please enter your username and password to login.";
+                message.style.color = "red";
+                return;
+            }
+
+            if (!username || !password) {
+                message.textContent = "You forgot one of the required fields, Please try again.";
+                message.style.color = "red";
+                return;
+            }
+
+            if (username === hardcodedUsername && password === hardcodedPassword) {
+                message.textContent = `Welcome ${username}! You have successfully logged in.`;
+                message.style.color = "white";
+            }
+            else {
+                message.textContent = "Please enter a valid username and password";
+                message.style.color = "red";
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: darkgreen;
+            background-image: url("login.jpeg");
+            color: white;
+        }
+        form{
+            background-image: url("login.jpeg");
+            padding: 20px;
+            border-radius: 10px;
+            padding: 21px;
+            box-shadow: 1px 1px 12px 4px #45a049;
+            width: 350px;
+            height: 450px;
+
+        }
+        h1 {
+            text-align: center;
+        }
+        hr {
+            margin: 10px 0;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: none;
+        }
+        button{
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover ::before {
+            background-color: #45a049;
+
+        }
+        button:active {
+            background-color: #45a049;
+            border: 1px solid #ffff;
+            box-shadow: 4px 3px #666;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <form onsubmit="event.preventDefault(); validateLogin();">
+        <h1>Login</h1><hr><br>
+        <legend for="username">Username:</legend>
+        <br>
+        <input type="text" id="username" name="username" placeholder="Enter the username" autofocus><br><br>
+
+        <legend for="password" >Password:</legend><br>
+        <input type="password" id="password" name="password" placeholder="Enter your Password"><br><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="message"></p>
+</body>
+
+</html>

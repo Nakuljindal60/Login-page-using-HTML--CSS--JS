@@ -11,6 +11,7 @@ body {
     background-image: url("login.jpeg");
     color: white;
 }
+
 form{
     background-image: url("login.jpeg");
     padding: 20px;
@@ -54,4 +55,20 @@ button:active {
     background-color: #45a049;
     border: 1px solid #ffff;
     box-shadow: 4px 3px #666;
+}
+@media screen and (max-width: 480px) {
+    form {
+        width: 75%;
+        height: auto;
+        min-height: 300px;
+        margin: 10px;
+    }
+    
+    input, button {
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
 }
